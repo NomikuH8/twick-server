@@ -19,7 +19,7 @@ export default async function () {
   app.register(fastifyMultipart, {})
 
   app.register(fastifyStatic, {
-    root: resolve(getDataPath().dist, 'dist'),
+    root: resolve(getDataPath().dist),
     prefix: '/'
   })
   app.register(fastifyStatic, {
