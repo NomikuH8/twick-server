@@ -1,5 +1,3 @@
-import { SystemVariables } from "./entity/SystemVariables"
-import { Recommender } from "./entity/Recommender"
 import { DataSource } from "typeorm"
 import "reflect-metadata"
 
@@ -12,7 +10,7 @@ export const AppDataSource = new DataSource({
     database: "twick",
     synchronize: true,
     logging: false,
-    entities: [Recommender, SystemVariables],
+    entities: ['src/entity/**/*.ts'],
     migrations: [],
     subscribers: [],
 })

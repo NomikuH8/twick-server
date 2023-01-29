@@ -7,7 +7,8 @@ export function getDataPath() {
     root,
     configs: resolve(root, 'configs'),
     dist: resolve(root, 'dist'),
-    images: resolve(root, 'images')
+    images: resolve(root, 'images'),
+    translations: resolve(root, 'translations')
   }
 }
 

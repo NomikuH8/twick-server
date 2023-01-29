@@ -1,11 +1,12 @@
-import { fastifyMultipart } from "@fastify/multipart";
-import { fastifyAutoload } from "@fastify/autoload";
-import { fastifyStatic } from "@fastify/static";
-import { fastifyCors } from "@fastify/cors";
-import { fastify } from "fastify";
-import { getDataPath, getImagePath } from "./paths";
-import { resolve } from "path";
-import { cwd } from "process";
+import { fastifyMultipart } from "@fastify/multipart"
+import { getDataPath, getImagePath } from "./paths"
+import { fastifyAutoload } from "@fastify/autoload"
+import { fastifyStatic } from "@fastify/static"
+import { handler404 } from "../controllers/404"
+import { fastifyCors } from "@fastify/cors"
+import { fastify } from "fastify"
+import { resolve } from "path"
+import { cwd } from "process"
 
 export default async function () {
   const app = fastify({})
@@ -42,9 +43,7 @@ export default async function () {
     dir: resolve(cwd(), 'src', 'routes')
   })
 
-  app.get('/', async (req, res) => {
-    return res.sendFile('index.html')
-  })
+  app.setNotFoundHandler(handler404)
 
   return app
 }

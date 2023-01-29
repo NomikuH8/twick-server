@@ -39,5 +39,4 @@ export default async function () {
     "language": "en"
     // remove the comments (text marked after //)
   }`
-  // TODO: create folders
 }
