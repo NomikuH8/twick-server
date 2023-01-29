@@ -1,7 +1,7 @@
 export interface SetVariablesBody {
   twitter: {
-    client_id: string
-    client_secret: string
+    consumer_key: string
+    consumer_secret: string
     callback: string
   },
   discord: {

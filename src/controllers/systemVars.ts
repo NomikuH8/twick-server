@@ -19,8 +19,8 @@ export async function setVariables(req: FastifyRequest) {
   const body = req.body as SetVariablesBody
 
   const twitter = new SystemVariables('TWITTER', {
-    client_id: body.twitter.client_id,
-    client_secret: body.twitter.client_secret,
+    consumer_key: body.twitter.consumer_key,
+    consumer_secret: body.twitter.consumer_secret,
     callback: body.twitter.callback
   })
   await AppDataSource.manager.save(twitter)

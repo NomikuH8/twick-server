@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Recommendation } from "./Recommendation"
 
 @Entity()
 export class Recommender {
@@ -13,8 +14,9 @@ export class Recommender {
   discord: string
 
   @Column()
-  ping: string
+  discord_ping: string
 
-  // TODO: add one-to-many relation to recommendations
+  @OneToMany(() => Recommendation, (rec) => rec.recommender)
+  recommendations: Recommendation[]
 
 }

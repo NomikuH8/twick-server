@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
 export class LoggedUser {
@@ -6,16 +6,20 @@ export class LoggedUser {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Unique('unique_user', ['twitter_id'])
+  @Column({ nullable: true })
+  twitter_id: string
+
+  @Column({ nullable: true })
   banner_image_link: string
 
-  @Column()
+  @Column({ nullable: true })
   profile_picture_link: string
 
-  @Column()
+  @Column({ nullable: true })
   name: string
 
-  @Column()
+  @Column({ nullable: true })
   screen_name: string // @
 
   @Column()
