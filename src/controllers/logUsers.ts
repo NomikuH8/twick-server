@@ -99,7 +99,18 @@ export async function changeUser(req: FastifyRequest) {
 }
 
 export async function getAvailableUsers() {
-  return await AppDataSource.manager.find(LoggedUser)
+  const obj = []
+  for (let i of await AppDataSource.manager.find(LoggedUser)) {
+    let a: any = {}
+    a.id = i.id
+    a.name = i.name
+    a.screen_name = i.screen_name
+    a.banner_image_link = i.banner_image_link
+    a.profile_picture_link = i.profile_picture_link
+    a.twitter_id = i.twitter_id
+    obj.push(a)
+  }
+  return obj
 }
 
 export async function removeUser() {
