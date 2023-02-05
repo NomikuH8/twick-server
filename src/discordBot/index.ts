@@ -1,7 +1,7 @@
 import { receiveRecommendation } from "./recommendations"
+import { AppDataSource } from "../data-source"
 import { Client, Message } from "discord.js"
 import { argv } from "process"
-import { AppDataSource } from "../data-source"
 
 export class DiscordBot {
   private allowedChannels: string[]
@@ -61,11 +61,8 @@ export class DiscordBot {
       if (!this.allowedChannels.includes(channelName)) return
       const command = this.getCommand(msg)
 
-      if (
-        (msg.attachments.first() || msg.embeds.length)
-      ) {
+      if (msg.attachments.first() || msg.embeds.length)
         await receiveRecommendation(msg)
-      }
 
       if (!command) return
     })

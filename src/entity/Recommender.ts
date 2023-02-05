@@ -7,9 +7,6 @@ export class Recommender {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ nullable: true })
-  twitter: string
-
   @Column()
   discord: string
 

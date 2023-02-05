@@ -1,11 +1,11 @@
-import { AppDataSource } from "../data-source"
-import { Message } from "discord.js"
 import { SystemVariables } from "../entity/SystemVariables"
-import { Recommender } from "../entity/Recommender"
-import { CustomString } from '../entity/CustomString'
-import download from 'download'
-import { getImagePath } from "../utils/paths"
 import { Recommendation } from "../entity/Recommendation"
+import { CustomString } from "../entity/CustomString"
+import { Recommender } from "../entity/Recommender"
+import { AppDataSource } from "../data-source"
+import { getImagePath } from "../utils/paths"
+import { Message } from "discord.js"
+import download from "download"
 import got from "got"
 
 interface File {
