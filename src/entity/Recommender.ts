@@ -7,7 +7,7 @@ export class Recommender {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ nullable: true })
   twitter: string
 
   @Column()
