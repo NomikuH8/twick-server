@@ -1,20 +1,18 @@
-import { FastifyInstance } from "fastify";
-import { addUser, authCallback, changeUser, getAvailableUsers } from "../controllers/logUsers";
+import { FastifyInstance } from 'fastify'
+import {
+  addUser, authCallback, changeUser, getAvailableUsers, getUser, removeUser,
+} from '../controllers/logUsers'
 
-export default async function (fastify: FastifyInstance) {
-  fastify.get('/login', async (req, res) => {
-    return await addUser(res)
-  })
+export default async function logUsers(fastify: FastifyInstance) {
+  fastify.get('/login', async (req, res) => addUser(res))
 
-  fastify.get('/callback', async (req, res) => {
-    return await authCallback(req, res)
-  })
+  fastify.get('/callback', async (req, res) => authCallback(req, res))
 
-  fastify.get('/changeuser/:user', async (req) => {
-    return await changeUser(req)
-  })
+  fastify.get('/changeuser/:user', async (req) => changeUser(req))
 
-  fastify.get('/availableusers', async () => {
-    return await getAvailableUsers()
-  })
+  fastify.get('/availableusers', async () => getAvailableUsers())
+
+  fastify.get('/currentuser', async () => getUser())
+
+  fastify.get('/removeuser', async () => removeUser())
 }

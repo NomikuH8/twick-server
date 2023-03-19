@@ -1,9 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
-interface image {
-  filename: string
-}
-
 @Entity()
 export class ScheduledPost {
 
@@ -13,6 +9,9 @@ export class ScheduledPost {
   @Column({ nullable: true, length: 280 })
   text: string
 
+  @Column()
+  timestamp: Date
+
   @Column('json')
-  images: image[]
+  images: string[]
 }

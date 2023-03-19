@@ -23,7 +23,7 @@ export async function receiveRecommendation (msg: Message) {
   const user = await getUser(msg)
 
   const files: File[] = []
-  for (let i of msg.attachments) {
+  for (const i of msg.attachments) {
     files.push({
       filename: i[1].name,
       url: i[1].url,
@@ -113,7 +113,7 @@ async function setupCustomStrings () {
     await AppDataSource.manager.save(answer)
   }
   if (!right) {
-    right  = new CustomString()
+    right = new CustomString()
     right.name = 'list_recommendations_right'
     right.value = '🟢 %filename%\n'
     await AppDataSource.manager.save(right)

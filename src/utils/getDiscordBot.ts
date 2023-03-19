@@ -1,14 +1,19 @@
+import { SystemVariables } from "../entity/SystemVariables"
+import { AppDataSource } from "../data-source"
 import { FastifyInstance } from "fastify"
 import { fork } from "child_process"
 import { resolve } from "path"
 import { cwd } from "process"
-import { AppDataSource } from "../data-source"
-import { SystemVariables } from "../entity/SystemVariables"
 
 export default async function (fastify: FastifyInstance) {
   const discordConfigs = await AppDataSource.manager.findOneBy(SystemVariables, {
     name: 'DISCORD'
   })
+  if (!discordConfigs) {
+    console.log('No token for discord bot! Please restart the program if set.')
+    return
+  }
+
   const textConfigs = JSON.stringify(discordConfigs.value)
   const discordBot = fork(
     resolve(cwd(), 'src', 'discordBot', 'index.ts'),
